@@ -5,11 +5,19 @@ import numpy
 import input_HRV
 
 from keras import optimizers
+#強制使用CPU
+#import tensorflow as tf
+#import keras.backend.tensorflow_backend as KTF
+#KTF.set_session(tf.Session(config=tf.ConfigProto(device_count={'gpu':0})))
+#強制使用CPU
+import os
+os.environ["CUDA_VISIBLE_DEVICES"] = ""
+
 
 numpy.random.seed(7)
 
 #讀入訓練資料
-x_train, y_train = input_HRV.reda_in_hrv_data('test.csv')
+x_train, y_train = input_HRV.reda_in_hrv_data('train.csv')
 
 print(x_train.shape)    #(41033, 8)
 print(y_train.shape)    #(41033, )

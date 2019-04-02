@@ -1,5 +1,4 @@
 import numpy as np
-from pylab import plt
 import pandas as pd  
 
 """
