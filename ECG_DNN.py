@@ -4,6 +4,8 @@ from keras.utils import np_utils  # 用來後續將 label 標籤轉為 one-hot-e
 import numpy
 import input_HRV
 
+from keras import optimizers
+
 numpy.random.seed(7)
 
 #讀入訓練資料
@@ -16,17 +18,18 @@ print(y_train.shape)    #(41033, )
 y_train_OneHot = np_utils.to_categorical(y_train, num_classes=2)
 print(y_train_OneHot.shape)    #(41033, 2)
 
-
-
 model = Sequential()
-model.add(Dense(12, input_dim=8, activation='relu'))
-model.add(Dense(24, activation='relu'))
-model.add(Dense(48, activation='softmax'))
-model.add(Dense(24, activation='relu'))
-model.add(Dense(12, activation='relu'))
-model.add(Dense(2, activation='sigmoid'))
-model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+model.add(Dense(16, input_dim=8, activation='relu'))
+model.add(Dense(32, activation='relu'))
+model.add(Dense(64, activation='relu'))
+model.add(Dense(128, activation='relu'))
+model.add(Dense(64, activation='relu'))
+model.add(Dense(32, activation='relu'))
+model.add(Dense(16, activation='relu'))
+model.add(Dense(2, activation='softmax'))
+adam = optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0001, amsgrad=False)
+model.compile(loss='binary_crossentropy', optimizer=adam, metrics=['accuracy'])
 
-train_history = model.fit(x=x_train, y=y_train_OneHot, validation_split=0.2, epochs=100, batch_size=2500, verbose=2)
+train_history = model.fit(x=x_train, y=y_train_OneHot, validation_split=0.2, epochs=1000, batch_size=128, verbose=2)
 
 #scores = model.evaluate()
