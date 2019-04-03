@@ -2,4 +2,6 @@
 
 訓練檔案為: test.csv
 
-訓練程式為: ECG_DNN
+DNN訓練程式為: ECG_DNN
+
+SVM訓練程式為: svmTraining_HRV
