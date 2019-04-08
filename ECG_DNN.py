@@ -26,7 +26,11 @@ print(x_test.shape)
 print(y_test.shape)
 
 #label轉成one hot encode 的形式
+print('原本的label')
+print(y_train[0])
 y_train_OneHot = np_utils.to_categorical(y_train, num_classes=2)
+print('後來的label')
+print(y_train_OneHot[0])
 print(y_train_OneHot.shape)    #(41033, 2)
 #test data set 的label也轉
 y_test_OneHot = np_utils.to_categorical(y_test, num_classes=2)
