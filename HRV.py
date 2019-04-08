@@ -13,6 +13,7 @@ import numpy as np
 from scipy import interpolate
 #from spectrum import pburg
 from scipy.signal import welch
+import csv
 
 def read_hrv_text(pathname):
     try:
@@ -82,9 +83,20 @@ def _poincare(rri):
                                                               ddof=1) ** 2)
     return sd1, sd2
 
+#try to run matlab code in python, and send data directly to python
+import matlab.engine
+eng = matlab.engine.start_matlab()
+matlabOutPut = eng.callRaw_ECG('201903272153_00_Heart.csv', nargout=1)
+eng.quit()
+
+#run this function if this is the file that be execute
 if __name__ == '__main__':
-    #rri单位：ms,不能包含零值
-    rri = np.loadtxt('jeep_rri.txt')
+    
+    #rri = np.loadtxt('jeep_rri.txt')
+    rri = np.array(matlabOutPut[0])
+    print(rri.shape)
+    for x in rri:
+        print(x)
     #rri = np.delete(rri,0.0)
     
     #1.Time Domain Analysis
@@ -96,4 +108,16 @@ if __name__ == '__main__':
     print('Frequency Domain Analysis:',result_frequency)
     #3.Nonlinear Analysis
     result_nonlinear = non_linear(rri)
-    print('Nonlinear Analysis:',result_frequency)
+    print('Nonlinear Analysis:',result_nonlinear)
+
+    #make all features in to a one row list
+    features_in_list = []
+    for k, v in result_time.items():
+        features_in_list.append(v)
+    for k, v in result_frequency.items():
+        features_in_list.append(v)
+    for k, v in result_nonlinear.items():
+        features_in_list.append(v)
+    print(features_in_list)
+    
+
