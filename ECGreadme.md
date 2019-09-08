@@ -21,6 +21,7 @@
 |<span class="text-nowrap"> **DNN_ECG_predict.py**</span>|<span class="text-nowrap"> **此檔案為python程式碼，目的是使用預先train好的model，預測輸入的ECG的受測者的壓力感受情況**</span>|
 |<span class="text-nowrap"> **DNN_Model.m**</span>|<span class="text-nowrap"> **此檔案為keras的model檔案，使用時請用keras的load_model函數，並且輸入為1*8的numpy array，其中8個數值為HRV的features**</span>|
 |<span class="text-nowrap"> **adc03.csv**</span>|<span class="text-nowrap"> **此檔案為預設輸入之csv檔案，內容為raw ECG data，若要預測其他新測量的資料，就要將該資料整理成與adc03.csv相同的格式，才能正常輸入**</span>|
+|<span class="text-nowrap"> **ECG_final_out_env.yml**</span>|<span class="text-nowrap"> **此檔案為測試使用的環境，可以使用amaconda做匯入**</span>|
 
 ## 各檔案的輸出與輸入
 |檔案名稱|輸入|輸出|
