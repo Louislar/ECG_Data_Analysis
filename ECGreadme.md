@@ -34,14 +34,10 @@
 
 ## 程式使用方式
 
-1. 到DNN_ECG_predict.py的39行程式碼修改輸入檔案路徑(預設輸入檔案為同資料夾下的adc3.csv)，於下圖紅框處修改檔案路徑
+1. 使用command line執行DNN_ECG_predict.py，如下圖紅框處的指令，可以於後面加上參數，輸入想預測的raw ECG檔案名稱
 
-![pic01](https://raw.githubusercontent.com/Louislar/ECG_Data_Analysis/master/ECG_readme_pic001.png "modify pic")
+![pic02](https://raw.githubusercontent.com/Louislar/ECG_Data_Analysis/master/ECG_readme_pic004.png)
 
-2. 使用command line執行DNN_ECG_predict.py，如下圖紅框處的指令
-
-![pic02](https://raw.githubusercontent.com/Louislar/ECG_Data_Analysis/master/ECG_readme_pic002.png)
-
-3. 最後得到預測結果，[1, 0]為不緊張，[0, 1]為緊張，如下圖的紅箭頭指向處的預測結果即為不緊張
+2. 最後得到預測結果，[1, 0]為不緊張，[0, 1]為緊張，如下圖的紅箭頭指向處的預測結果即為不緊張
 
 ![pic03](https://raw.githubusercontent.com/Louislar/ECG_Data_Analysis/master/ECG_readme_pic003.png)
